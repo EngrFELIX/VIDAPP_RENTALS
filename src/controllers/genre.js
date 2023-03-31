@@ -30,10 +30,11 @@ try{
 }
 }
 
-const createGenre = async(req, res) => {
+const createGenre = async (req, res) => {
 try{
- const movie = await movieSchema.findById(req.params.id)
- if (!movie) return res.status(StatusCodes.NOT_FOUND).json({message: "movie not found"})
+  const movie = await movieSchema.findById(req.params.id)
+
+  if (!movie) return res.status(StatusCodes.NOT_FOUND).json({message: "movie not found"})
 
 const {name} = req.body
 
@@ -41,7 +42,7 @@ if (!name) return res.status(StatusCodes.BAD_REQUEST).json({message: "Name is re
 
 const createGenre = await genreSchema.create(name)
 movie.genre.addToSet(createGenre)
-movie.save()
+await movie.save()
 res.status(StatusCodes.CREATED).json({message: "movie created successfully"})
 
 }catch(error){
@@ -71,7 +72,7 @@ const deleteGenre = async (req, res) => {
     res.status(StatusCodes.OK).json({message:"Deleted genre successfully"})
     
   }catch(error){
-    res.status(StatusCodes.BadRequestError).json({message: err.message})
+    res.status(StatusCodes.BAD_REQUEST).json({message: err.message})
   }
 }
 

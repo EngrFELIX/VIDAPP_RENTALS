@@ -1,7 +1,7 @@
-const Rental = require("../models/rentalModel");
-const Movie = require("../models/movieModel");
-const rentalValidate = require("../middleware/rentalMiddleware");
-const customerModel = require("../models/customerModel");
+const Rental = require("../models/rentals");
+const Movie = require("../models/movies");
+const rentalValidate = require("../middlewares/rentalMiddleware");
+const customerModel = require("../models/customers");
 
 const createRental = async (req, res) => {
   const { customer, movie } = req.params;

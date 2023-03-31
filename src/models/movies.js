@@ -15,10 +15,10 @@ const movieSchema = new mongoose.Schema({
       type: Number, 
       required: true,
     },
-    dailyRentals: {
+    dailyRentalRate: {
       type: Number, 
       required: true,
     },
 })
 
-module.exports = mongoose.model("Movie", movieSchema)
+module.exports = mongoose.model("Movies", movieSchema)

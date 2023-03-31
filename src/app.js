@@ -5,20 +5,16 @@ const mongoose = require('mongoose')
 const connectDb = require("./db/connect")
 
 const genreRoutes = require("./routes/genreRoute")
-
+const moviesRoutes = require("./routes/movieRoute")
+const rentalRoutes = require("./routes/rentalRoute")
 const PORT = process.env.PORT || 3000
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use("/api/v1/customers",  require('./routes/customerRoute.js'));
 app.use("/api/v1/genres", genreRoutes)
-// const MONGODB_URI = process.env.MONGODB_URI
-
-// mongoose.connect(MONGODB_URI).then(result => {
-//     console.log("Database connect successfully")
-// }).catch(error => {
-//     console.log(error.message)
-// })
+app.use("/api/v1/movies", moviesRoutes)
+app.use("/api/v1/rentals", rentalRoutes)
 
 const start = async () => {
     try{
