@@ -41,7 +41,40 @@ const getRental = async (req, res) => {
   }
 };
 
+// Get one rented movie
+const getSingleRentedMovie = async (req, res, next) => {
+  try {
+    const rentedMovie = await Rental.findById(req.params.id);
+
+    if (!rentedMovie) {
+      return res.status(404).json({ message: "No movie rented!" });
+    }
+
+    res.status(200).json({ rentedMovie });
+  } catch (err) {
+    next(err);
+  }
+};
+
+// Delete a rental
+const deleteRental = async (req, res, next) => {
+  try {
+    const deletedRental = await Rental.findByIdAndRemove(req.params.id);
+
+    if (!deletedRental) {
+      return res.status(404).json({ message: "Rental details not found!" });
+    }
+
+    res.status(204).end();
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   getRental,
   createRental,
+  getSingleRentedMovie,
+  deleteRental,
+
 };
