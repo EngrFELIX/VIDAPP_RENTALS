@@ -1,4 +1,4 @@
 ## VID_RENTAL_APP
 *This is an App for renting out movies.*
 
-[Vid_App_Rentals](https://vid-app-rentals.onrender.com)
+[Vid_App_Rentals](https://vidapp-rentals.onrender.com)
